@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
-  belongs_to :post, :user
+  belongs_to :post
+  belongs_to :user
 
-  validate_presence_of :entry
-  validate_presence_of :author_id
+  validates_presence_of :entry
+  validates_presence_of :user_id
 end

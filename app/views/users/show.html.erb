@@ -1,2 +1,19 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.username %></h1>
+<h3> Age: <%= @user.age %></h3>
+<h3> About: <%= @user.description %> </h3>
+<h3> Posts: </h3>
+<% if @posts.any? %>
+  <ul>
+    <% @posts.each do |post| %>
+      <li> <%= link_to post.entry, post_path(post) %>
+        <%= button_to 'Delete', post_path(post), method: :delete, data: {confirm: 'Really delete this item?'}  %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h5>There are no posts in this tank.</h5>
+<% end %>
+
+<%= render(partial: 'nav_bar') %>
+<%= link_to 'Edit User', edit_user_path(@user) %>
+<%= link_to 'Create Post', new_post_path(user_id: @user.id) %>

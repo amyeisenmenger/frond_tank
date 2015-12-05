@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20151204215854) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "entry"
-    t.integer  "author_id"
+    t.integer  "user_id"
     t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20151204215854) do
 
   create_table "posts", force: :cascade do |t|
     t.text     "entry"
-    t.integer  "author_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

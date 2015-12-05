@@ -1,0 +1,12 @@
+<% if @post.errors.any? %>
+  <h5>Errors:</h5>
+  <p><%= @post.errors.full_messages.join(', ') %></p>
+<% end %>
+
+<%= form_for @post do |f| %> 
+  <%= f.hidden_field :user_id %>
+  <%= f.label :entry %>
+  <%= f.text_area :entry %>
+  <br />
+  <%= f.submit %>
+<% end %>

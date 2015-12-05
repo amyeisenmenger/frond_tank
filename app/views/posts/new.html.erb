@@ -1,2 +1,4 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>Create a New Post, <%= @user.username %></h1>
+<%= render(partial: 'form') %>
+
+<%= link_to 'Back', user_path(@user) %>
