@@ -1,0 +1,10 @@
+<hr />
+<%= link_to 'Home', root_path %> |
+<%= link_to 'Back to User', user_path(@user) %>
+<br />
+<%= link_to 'New Bubble', new_post_path(user_id: @user.id) %>
+
+<br />
+<%= link_to 'Comment', new_comment_path(user_id: @user.id, post_id: @post.id) %>
+<br />
+<%= link_to 'New User', new_user_path %>

@@ -6,6 +6,7 @@
   <ul>
     <% @posts.each do |post| %>
       <li> <%= link_to post.entry, post_path(post) %>
+        <%= button_to 'Edit', edit_post_path(post), method: :get %>
         <%= button_to 'Delete', post_path(post), method: :delete, data: {confirm: 'Really delete this item?'}  %>
       </li>
     <% end %>
@@ -14,6 +15,9 @@
   <h5>There are no posts in this tank.</h5>
 <% end %>
 
-<%= render(partial: 'nav_bar') %>
-<%= link_to 'Edit User', edit_user_path(@user) %>
+<hr />
+<%= link_to 'Home', root_path %> |
 <%= link_to 'Create Post', new_post_path(user_id: @user.id) %>
+<br />
+<%= link_to 'Edit User', edit_user_path(@user) %> |
+<%= link_to 'Delete User', user_path(@user), method: :delete, data: {confirm: 'Really delete this item?'} %>

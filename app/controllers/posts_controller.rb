@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments
+    @comments = @post.comments.all
     @user = User.find(@post.user_id)
   end
 
@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @user = User.find(@post.user_id)
     if @post.save
       redirect_to user_path(@post.user_id)
     else
@@ -25,6 +26,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @user = User.find(@post.user_id)
     if @post.update(post_params)
       redirect_to post_path(@post)
     else

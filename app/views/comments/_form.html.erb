@@ -1,0 +1,13 @@
+<% if @comment.errors.any? %>
+  <h3>Errors:</h3>
+  <%= @comment.errors.full_messages.join(', ') %>
+<% end %>
+<%= form_for @comment do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :post_id %>
+
+  <%= f.label :entry %>
+  <%= f.text_area :entry %>
+  <br />
+  <%= f.submit %>
+<% end %>

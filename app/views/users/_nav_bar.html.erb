@@ -1,3 +1,7 @@
 <hr />
-<%= link_to 'Home', root_path %>
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'Home', root_path %> |
+<%= link_to 'Create Post', new_post_path(user_id: @user.id) %>
+<br />
+<%= link_to 'New User', new_user_path %> |
+<%= link_to 'Edit User', edit_user_path(@user) %> |
+<%= link_to 'Delete User', user_path(@user), method: :delete, data: {confirm: 'Really delete this item?'} %>

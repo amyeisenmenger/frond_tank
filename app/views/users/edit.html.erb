@@ -1,4 +1,7 @@
 <h1>Edit <%= @user.username %></h1>
 <%= render(partial: 'form') %>
 
-<%= render(partial: 'nav_bar') %>
+<hr />
+<%= link_to 'Home', root_path %> |
+<%= link_to 'New User', new_user_path %> |
+<%= link_to 'Delete User', user_path(@user), method: :delete, data: {confirm: 'Really delete this item?'} %>

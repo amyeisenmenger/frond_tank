@@ -3,17 +3,19 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
-    @posts = @comment.posts
+    @post = Post.find(@comment.post_id)
+    @user = User.find(@post.user_id)
   end
 
   def new
-    @comment = Comment.new
+    @comment = Comment.new(user_id: params[:user_id], post_id: params[:post_id])
+    @post = Post.find(@comment.post_id)
   end
 
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to comments_path
+      redirect_to post_path(@comment.post_id)
     else
       render :new
     end
@@ -26,7 +28,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      redirect_to comment_path(@comment)
+      redirect_to post_path(@comment.post_id)
     else
       render :edit
     end
@@ -35,7 +37,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     if @comment.destroy
-      redirect_to comments_path
+      redirect_to post_path(@comment.post_id)
     else
       redirect_to comment_path(@comment)
     end
