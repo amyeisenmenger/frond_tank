@@ -1,15 +1,18 @@
 <h1>Thought Bubble</h1>
+<%= image_tag @user.avatar.url(:medium) %>
 <h3><%= "By: #{@user.username}" %></h3>
 <p><%= @post.entry %></p>
 <%= button_to 'Edit Post', edit_post_path(@post), method: :get %>
 <%= button_to 'Delete Post', post_path(@post), method: :delete, data: {confirm: 'Really pop this thought bubble?'} %>
 
 <% if @comments.any? %>
+  <h4>Comments:</h4>
   <ul>
     <% @comments.each do |comment| %>
       <li>
         <%= link_to "#{comment.entry}", comment_path(comment.id) %>
-        <span>By: </span><%= link_to "#{@user.username}", user_path(comment.user_id) %>
+        <br />
+        <%= image_tag @user.avatar.url(:thumb) %><span>By: </span><%= link_to "#{@user.username}", user_path(comment.user_id) %>
         <%= button_to 'Edit Comment', edit_comment_path(comment), method: :get %>
         <%= button_to 'Delete Comment', comment_path(comment), method: :delete, data: {confirm: 'Really delete this polyp?'} %>
       </li>
@@ -18,6 +21,7 @@
 <% else %>
   <h3>There are no polyps on this thought bubble.</h3>
 <% end %>
-<br />
 
-<%= render(partial: 'post_nav_bar') %>
+<%= render(partial: 'post_nav_bar') %> |
+<%= link_to 'New Comment', new_comment_path(user_id: @user.id, post_id: @post.id) %>
+

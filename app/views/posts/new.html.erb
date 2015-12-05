@@ -1,6 +1,4 @@
-<h1>Create a New Post, <%= @user.username %></h1>
+<h1>What's in your thought bubble, <%= @user.username %> ?</h1>
 <%= render(partial: 'form') %>
-<br />
-<hr />
-<%= link_to 'Home', root_path %> |
-<%= link_to 'Back to User', user_path(@user) %>
+
+<%= render(partial: 'post_nav_bar') %>

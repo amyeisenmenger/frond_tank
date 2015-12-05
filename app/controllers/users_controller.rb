@@ -44,10 +44,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy_avatar
+    @user.avatar = nil
+    if @user.save
+      redirect_to users_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :age, :description)
+    params.require(:user).permit(:username, :avatar, :age, :description)
   end
 
 end

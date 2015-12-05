@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  # TODO: add title to posts
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments.all
@@ -22,6 +23,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @user = User.find(@post.user_id)
   end
 
   def update

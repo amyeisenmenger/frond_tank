@@ -4,11 +4,5 @@
 <%= button_to 'Edit Comment', edit_comment_path(@comment), method: :get %>
 <%= button_to 'Delete Comment', comment_path(@comment), method: :delete, data: {confirm: 'Really delete this polyp?'} %>
 
-<hr />
-<%= link_to 'Home', root_path %>
-<%= link_to 'Back to User Profile', user_path(@comment.user_id) %>
-<%= link_to 'Back to Post', post_path(@comment.post_id) %>
-<br />
+<%= render(partial: 'comment_nav_bar') %> |
 <%= link_to 'New Comment', new_comment_path(user_id: @user.id, post_id: @post.id) %>
-<br />
-<%= link_to 'New User', new_user_path %>

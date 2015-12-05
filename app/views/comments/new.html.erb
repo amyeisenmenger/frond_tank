@@ -1,8 +1,4 @@
 <h1>A Polyp for your Thoughts:</h1>
 <%= render(partial: 'form') %>
 
-<hr />
-<%= link_to 'Home', root_path %> |
-<%= link_to 'Back to User Profile', user_path(@comment.user_id) %> |
-<%= link_to 'Back to Post', post_path(@comment.user_id) %>
-
+<%= render(partial: 'comment_nav_bar') %>
