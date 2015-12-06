@@ -1,17 +1,33 @@
-<h1>All FrondTank Users</h1>
-<% if @users.any? %>
-  <ul>
-    <% @users.each do |user| %>
-      <li>
-        <%= image_tag user.avatar.url(:medium) %>
-        <%= link_to user.username, user_path(user) %>
-        <%= button_to 'Edit User', edit_user_path(user), method: :get %>
-        <%= button_to 'Delete User', user_path(user), method: :delete, data: {confirm: 'Really delete this user?'} %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <h3>There are no fish in the FrondTank. Please create a user.</h3>
-<% end %>
-
-<%= render(partial: 'nav_bar') %>
+<header>
+  <h1>All FrondTank Users</h1>
+</header>
+<div>
+  <% if @users.any? %>
+    <ul>
+      <% @users.each do |user| %>
+        <li>
+          <%= image_tag user.avatar.url(:medium) %>
+          <section class="inline-block">  
+            <h3><%= link_to user.username, user_path(user) %></h3>
+            <h4>Age: <%= user.age %></h4>
+            <h4>About: <%= user.description %></h4>
+            <section class="inline-block">
+              <%= button_to 'Edit User', edit_user_path(user), method: :get, class: "btn" %>
+            </section>
+            <section class="inline-block">
+              <%= button_to 'Delete User', user_path(user), method: :delete, data: {confirm: 'Really delete this user?'}, class: "btn" %>
+          </section>
+          </section>
+        </li>
+        <hr />
+      <% end %>
+    </ul>
+  <% else %>
+    <h3>There are no fish in the FrondTank. Please create a user.</h3>
+  <% end %>
+</div>
+<nav class="navbar-fixed">
+  <a>
+    <%= render(partial: 'nav_bar') %>
+  </a>
+</nav>

@@ -1,8 +1,15 @@
-<h1>Polyp View</h1>
-<h3><%= "By: #{@user.username}" %></h3>
-<p><%= @comment.entry %></p>
-<%= button_to 'Edit Comment', edit_comment_path(@comment), method: :get %>
-<%= button_to 'Delete Comment', comment_path(@comment), method: :delete, data: {confirm: 'Really delete this polyp?'} %>
-
+<header>
+  <h1>Polyp View</h1>
+</header>
+<div>
+  <%= image_tag @user.avatar.url(:thumb) %>
+  <h3 class="inline-block">By: <%= link_to "#{@user.username}", user_path(@comment.user_id) %></h3>
+  <h5><%= @comment.entry %></h5>
+  <br />
+  <section class="inline-block"><%= button_to 'Edit Comment', edit_comment_path(@comment), method: :get, class: "btn" %></section>
+  <section class="inline-block"><%= button_to 'Delete Comment', comment_path(@comment), method: :delete, data: {confirm: 'Really delete this polyp?'}, class: "btn" %></section>
+</div>
+<nav class="navbar-fixed">
 <%= render(partial: 'comment_nav_bar') %> |
 <%= link_to 'New Comment', new_comment_path(user_id: @user.id, post_id: @post.id) %>
+</nav>

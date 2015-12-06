@@ -1,4 +1,10 @@
-<h1>Edit <%= @user.username %></h1>
-<%= render(partial: 'form') %>
+<header>
+  <h1>Edit <%= @user.username %></h1>
+</header>
+<div>
+  <%= render(partial: 'form') %>
+</div>
 
+<nav class="navbar-fixed">
 <%= render(partial: 'nav_bar') %>
+</nav>

@@ -1,8 +1,41 @@
-@import "materialize";
+
 
 @import "materialize/components/color";
-$primary-color: color("blue", "lighten-2") !default;
+$primary-color: color("orange", "darken-1") !default;
+$navbar-font-color: color("blue", "lighten-2") !default;
+$button-color: color("orange", "darken-1");
+$button-color-raised: color("blue", "lighten-2");
+
+header {
+  padding: 2px 0 2px 20px;
+  background-color: color("blue", "lighten-2");
+}
+nav {
+  padding-left: 20px;
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+form {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+div {
+  margin: 10px 20px 0 20px;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.btn {
+  padding-left: -10px;
+  padding-bottom: 10px;
+}
+
 @import 'materialize';
+
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

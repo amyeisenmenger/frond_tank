@@ -1,20 +1,36 @@
-<%= image_tag @user.avatar.url(:medium) %>
-<h1><%= @user.username %></h1>
-<h3> Age: <%= @user.age %></h3>
-<h3> About: <%= @user.description %> </h3>
-<h3> Posts: </h3>
-<% if @posts.any? %>
-  <ul>
-    <% @posts.each do |post| %>
-      <li> <%= link_to post.entry, post_path(post) %>
-        <%= button_to 'Edit', edit_post_path(post), method: :get %>
-        <%= button_to 'Delete', post_path(post), method: :delete, data: {confirm: 'Really delete this item?'}  %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <h5>There are no posts in this tank.</h5>
-<% end %>
-
-<%= render(partial: 'nav_bar') %> |
-<%= link_to 'Create Post', new_post_path(user_id: @user.id) %>
+<header>
+  <h1><%= @user.username %></h1>
+</header>
+<div>
+  <%= image_tag @user.avatar.url(:medium) %>
+  <section class="inline-blcok">
+    <h3> Age: <%= @user.age %></h3>
+    <h3> About: <%= @user.description %> </h3>
+  </section>
+  <hr />
+  <h3> Posts: </h3>
+  <% if @posts.any? %>
+    <ul>
+      <% @posts.each do |post| %>
+        <li> 
+          <h5><%= link_to post.entry, post_path(post) %></h5>
+          <section class="inline-block">
+            <%= button_to 'Edit Post', edit_post_path(post), method: :get, class: "btn" %>
+          </section>
+          <section class="inline-block">
+              <%= button_to 'Delete Post', post_path(post), method: :delete, data: {confirm: 'Really delete this item?'}, class: "btn"  %>
+          </section>
+        </li>
+        <hr />
+      <% end %>
+    </ul>
+  <% else %>
+    <h5>There are no posts in this tank.</h5>
+  <% end %>
+</div>
+<nav class="navbar-fixed">
+  <a>
+    <%= render(partial: 'nav_bar') %> |
+    <%= link_to 'Create Post', new_post_path(user_id: @user.id) %>
+  </a>
+</nav>
